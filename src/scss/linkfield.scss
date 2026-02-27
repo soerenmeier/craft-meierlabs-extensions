@@ -1,5 +1,6 @@
 .mle-link-field-compact {
-	.field[data-type='craft\\fields\\Link'] {
+	// but label on the right side if there is enough space
+	.field[data-type='craft\\\\fields\\\\Link'] {
 		container-type: inline-size;
 
 		@container (width > 900px) {
@@ -35,8 +36,9 @@
 		}
 	}
 
+	// remove border if its the only field
 	.flex-fields
-		> :first-child:last-child[data-type='craft\\fields\\Link']
+		> :first-child:last-child[data-type='craft\\\\fields\\\\Link']
 		> .input
 		> .pane {
 		padding: 0;
