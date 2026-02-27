@@ -1,0 +1,28 @@
+.mle-cke-hidden-list {
+	.ck-list-styles-dropdown .ck-button.ck-splitbutton__arrow {
+		display: none;
+	}
+
+	.ck-list-styles-dropdown
+		.ck.ck-splitbutton.ck-splitbutton_open
+		> .ck-splitbutton__action,
+	.ck-list-styles-dropdown
+		.ck.ck-splitbutton:hover
+		> .ck-splitbutton__action {
+		border-radius: var(--ck-border-radius) !important;
+	}
+}
+
+.mle-cke-font-sizes {
+	.ck-editor__main {
+		font-size: 16px;
+	}
+
+	.ck-editor__main h2 {
+		font-size: 1.5em;
+	}
+
+	.ck-editor__main h3 {
+		font-size: 1.25em;
+	}
+}

@@ -1,0 +1,33 @@
+{% import '_includes/forms.twig' as forms %}
+
+{{ forms.lightswitchField({
+  label: 'Hide CKEditor list',
+  name: 'ckeHiddenList',
+  on: settings.ckeHiddenList
+}) }}
+
+{{ forms.lightswitchField({
+  label: 'CKEditor font sizes',
+  name: 'ckeFontSizes',
+  on: settings.ckeFontSizes
+}) }}
+
+{{ forms.lightswitchField({
+  label: 'Compact link field',
+  name: 'linkFieldCompact',
+  on: settings.linkFieldCompact
+}) }}
+
+{{ forms.lightswitchField({
+  label: 'Ungroup matrix buttons',
+  name: 'ungroupMatrixButtons',
+  on: settings.ungroupMatrixButtons
+}) }}
+
+<div class="readable">
+  <p><strong>Ungroup Matrix setup:</strong></p>
+  <ul>
+    <li>If your Matrix field has only one group, rename the <em>New entry</em> button to <strong>ungroup</strong>.</li>
+    <li>If you have multiple groups, rename the group label to <strong>ungroup</strong>.</li>
+  </ul>
+</div>

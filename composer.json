@@ -1,0 +1,41 @@
+{
+	"name": "soerenmeier/meierlabs-extensions",
+	"description": "Improve the craft cms editing experience.",
+	"type": "craft-plugin",
+	"license": "proprietary",
+	"support": {
+		"source": "https://github.com/soerenmeier/craft-meierlabs-extensions"
+	},
+	"authors": [
+		{
+			"name": "Sören Meier",
+			"homepage": "https://github.com/soerenmeier"
+		}
+	],
+	"require": {
+		"php": ">=8.2",
+		"craftcms/cms": "^5.9.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"soerenmeier\\meierlabsextensions\\": "src/"
+		}
+	},
+	"extra": {
+		"handle": "meierlabs-extensions",
+		"name": "Meier Labs Extensions",
+		"developer": "Sören Meier",
+		"documentationUrl": "",
+		"class": "soerenmeier\\meierlabsextensions\\MeierLabsExtensions"
+	},
+	"config": {
+		"sort-packages": true,
+		"platform": {
+			"php": "8.2"
+		},
+		"allow-plugins": {
+			"yiisoft/yii2-composer": true,
+			"craftcms/plugin-installer": true
+		}
+	}
+}
