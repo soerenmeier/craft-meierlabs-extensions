@@ -1,5 +1,10 @@
 # Release Notes for Meier Labs Extensions
 
+## 1.0.2 - 2026-03-03
+
+### Fixes
+- fix ungroupMatrixButtons would always create the first block
+
 ## 1.0.1 - 2026-02-27
 
 ### Fixes
