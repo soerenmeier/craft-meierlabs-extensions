@@ -13,8 +13,10 @@ function inlineOnlyUngroupMenu(disclosureMenu) {
 	const $container = disclosureMenu.$container;
 	if (!$trigger || !$container) return;
 
-	const $buttonsRow = $trigger.closest('.matrix-field > .buttons');
-	if (!$buttonsRow.length) return;
+	const $containerCheck = $trigger.closest(
+		'.matrix-field > .buttons, .nested-element-cards',
+	);
+	if (!$containerCheck.length) return;
 
 	const triggerLabel = $trigger.find('.label').first().text().trim();
 	// ignore triggers which don't have the label ungroup
