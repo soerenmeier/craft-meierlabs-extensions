@@ -60,7 +60,18 @@ function ungroupTrigger($trigger, $container, isCards) {
 		$trigger.addClass('btngroup-btn-first');
 	}
 
-	const triggerWasFirst = $trigger.hasClass('btngroup-btn-first');
+	// blocks mode marks the first group trigger with btngroup-btn-first,
+	// cards mode doesn't use that class at all, so also treat the trigger
+	// as first when no other button precedes it in the btngroup
+	const triggerWasFirst =
+		$trigger.hasClass('btngroup-btn-first') ||
+		$trigger.prevAll('.btn').length === 0;
+
+	// blocks mode renders the plus via the `add` class, cards mode
+	// (Craft.ui.createButton) via an inline .cp-icon svg; only group
+	// triggers that show a plus should pass it on to their first clone
+	const triggerHadAddIcon =
+		$trigger.hasClass('add') || $trigger.find('.cp-icon').length > 0;
 
 	const $newButtons = $menuButtons.map((idx, btn) => {
 		const $orig = $(btn);
@@ -68,8 +79,11 @@ function ungroupTrigger($trigger, $container, isCards) {
 		$new.attr('id', $new.attr('id') + '-clone');
 		$new.attr('class', 'btn dashed');
 
-		if (idx === 0 && triggerWasFirst) {
-			$new.addClass('btngroup-btn-first icon add');
+		if (idx === 0 && triggerHadAddIcon) {
+			$new.addClass('icon add');
+			if (triggerWasFirst) {
+				$new.addClass('btngroup-btn-first');
+			}
 			$new.find('.icon').remove();
 		}
 
