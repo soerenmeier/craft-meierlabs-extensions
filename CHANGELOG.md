@@ -1,5 +1,8 @@
 # Release Notes for Meier Labs Extensions
 
+## 1.1.0 - 2026-07-13
+- add ungroup support for matrix cards blocks
+
 ## 1.0.2 - 2026-03-03
 
 ### Fixes
