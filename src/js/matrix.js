@@ -13,8 +13,10 @@ function inlineOnlyUngroupMenu(disclosureMenu) {
 	const $container = disclosureMenu.$container;
 	if (!$trigger || !$container) return;
 
-	const $buttonsRow = $trigger.closest('.matrix-field > .buttons');
-	if (!$buttonsRow.length) return;
+	const isBlocks = $trigger.closest('.matrix-field > .buttons').length > 0;
+	const isCards =
+		!isBlocks && $trigger.closest('.nested-element-cards').length > 0;
+	if (!isBlocks && !isCards) return;
 
 	const triggerLabel = $trigger.find('.label').first().text().trim();
 	// ignore triggers which don't have the label ungroup
@@ -25,11 +27,25 @@ function inlineOnlyUngroupMenu(disclosureMenu) {
 	if (triggerEl._matrixInlineUngroupInitialized) return;
 	triggerEl._matrixInlineUngroupInitialized = true;
 
-	// if the trigger belongs to a btnGroup which is collapse
+	if (isCards) {
+		// in cards view (Craft.NestedElementManager) the menu items are
+		// added via disclosureMenu.addItem() right after init, so we have
+		// to wait until they exist
+		setTimeout(() => ungroupTrigger($trigger, $container, isCards), 0);
+	} else {
+		ungroupTrigger($trigger, $container, isCards);
+	}
+}
+
+function ungroupTrigger($trigger, $container, isCards) {
+	// if the trigger belongs to a btnGroup which is collapsed
 	// that is the mobile version, we ignore it
 	if ($trigger.parent().hasClass('expandable-button--collapsed')) return;
 
-	const $menuButtons = $container.find('button.menu-item[data-type]');
+	// cards menu items are created dynamically and don't carry data-type
+	const $menuButtons = isCards
+		? $container.find('button.menu-item')
+		: $container.find('button.menu-item[data-type]');
 	if (!$menuButtons.length) return;
 
 	// Hide original menu trigger
@@ -51,8 +67,6 @@ function inlineOnlyUngroupMenu(disclosureMenu) {
 		const $new = $orig.clone();
 		$new.attr('id', $new.attr('id') + '-clone');
 		$new.attr('class', 'btn dashed');
-
-		console.log('idx', idx);
 
 		if (idx === 0 && triggerWasFirst) {
 			$new.addClass('btngroup-btn-first icon add');
