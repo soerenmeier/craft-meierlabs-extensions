@@ -24,7 +24,7 @@ Modify the `composer.json` to add the local path:
 and change the require section to:
 ```
 "require": {
-    "soerenmeier/meierlabs-extensions": "dev-main",
+    "soerenmeier/meierlabs-extensions": "dev-craft-4",
 }
 ```
 

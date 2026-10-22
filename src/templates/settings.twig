@@ -12,22 +12,5 @@
   on: settings.ckeFontSizes
 }) }}
 
-{{ forms.lightswitchField({
-  label: 'Compact link field',
-  name: 'linkFieldCompact',
-  on: settings.linkFieldCompact
-}) }}
-
-{{ forms.lightswitchField({
-  label: 'Ungroup matrix buttons',
-  name: 'ungroupMatrixButtons',
-  on: settings.ungroupMatrixButtons
-}) }}
-
-<div class="readable">
-  <p><strong>Ungroup Matrix setup:</strong></p>
-  <ul>
-    <li>If your Matrix field has only one group, rename the <em>New entry</em> button to <strong>ungroup</strong>.</li>
-    <li>If you have multiple groups, rename the group label to <strong>ungroup</strong>.</li>
-  </ul>
-</div>
+{# Craft 4 has no Link field and Matrix already shows every block type as
+   its own button, so the link field and ungroup settings are left out. #}
