@@ -1,5 +1,10 @@
 # Release Notes for Meier Labs Extensions
 
+## Unreleased
+
+- `mock-assets` generates image placeholders with GD in the size (at most 2400px) and format of each asset instead of downloading one 4000x4000 jpg, so layouts keep their aspect ratios and no download is needed; without GD (Imagick only) it downloads as before. Image kinds GD can't write (heic, tiff, bmp, ...) get jpg data under their own file name, as before
+- `mock-assets` downloads a dummy only when there are assets of its kind, and reports a dummy it can't write once instead of failing every asset
+
 ## 1.2.1 - 2026-10-16
 
 - relax the Craft CMS requirement from `^5.9.0` to `^5.0.0`
